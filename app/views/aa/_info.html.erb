@@ -1,0 +1,36 @@
+        <% if @book && @book.errors.any? %>
+        <%= @book.errors.count %>件のエラーが発生しました
+        <ul>
+        <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+        <% end %>
+        
+ 
+
+    
+        <h2>User info</h2>
+          <tr>
+           <tr>
+            <% if @user.profile_image.present? %>
+              <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg' %>
+            <% else %>
+              <%= image_tag 'default-image.jpg' %>
+            <% end %>
+          </tr>
+          <table class='table'>
+          <tr>
+            <th>name</th>
+            <th><%= @user.name %></th>  
+          </tr>
+          <tr>
+            <th>introduction</th>
+            <th><%= @user.introduction %></th> 
+          </tr> 
+          </table>
+            <div class='row'>
+                <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
+                    <i class="fas fa-user-cog"></i>
+                    <% end %>
+                    </div>
